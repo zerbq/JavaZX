@@ -1,0 +1,31 @@
+public class StudentTest
+{
+    public static void main(String[] args)
+    {
+        //质数：只能被自己和1整除的数
+        //不确定质数的位置，使用while（TRUE）死循环，当找到最小质数时循环中断
+        int num=200;
+        //设置开关，保证只有是质数时才输出
+        //开关为true时输出，为false不输出
+        boolean flag=true;
+        while(true){
+            num++;
+            //对该区间的数求余
+            //如果结果为0说明当前num不是质数
+            for(int i=2;i<num;i++){
+                if(num%i==0){
+                    //关闭开关
+                    flag=false;
+                    break;
+                }
+            }
+            //开关为true则输出
+            if(flag){
+                System.out.println(num);
+                break;
+            }
+            //由于之前不是质数的情况开关关闭了，当再次遇到质数的时候需要打开
+            flag=true;
+        }
+    }
+}
