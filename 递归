@@ -1,0 +1,58 @@
+public class Demo4Tz
+{
+    public static void main(String[] args)
+    {
+        //某月的兔子是上个月加大上个月的兔子数之和
+        //1 1 2 3 5 8 13 21 34 55 89 144
+
+        //递归方法
+        System.out.println(getTu(20));
+
+        //循环方法
+        System.out.println(getTu1(20));
+
+        //数组方法
+        System.out.println(getTu2(new int [20]));
+    }
+
+    //递归
+    public static int getTu(int m){
+        if (m<=2){
+            return 1;
+        }else {
+            return getTu(m-2)+getTu(m-1);
+        }
+    }
+
+    //循环
+    public static int getTu1(int m){
+        if (m<=2){
+            return 1;
+        }else {
+            //总数
+            int sum = 0;
+            //第一个月
+            int a = 1;
+            //第二个月
+            int b = 1;
+            for (int i=3;i<=20;i++){//从第三个月开始
+                sum = a+b;//总数等于前两个月之和
+                a = b; //改变前两个月的数值
+                b = sum;
+            }
+            return sum;
+        }
+    }
+
+
+    //数组
+    public static int getTu2(int [] a){
+        for (int i = 0;i<a.length;i++){
+            if (i<=1){
+                a[i] = 1;
+            }else {
+                a[i] = a[i-1] + a[i-2];
+            }
+        }return a[a.length-1];
+    }
+}
