@@ -1,0 +1,93 @@
+		//冒泡排序法
+		int[] arr=new int[]{45,12,23,10,6};
+		//升序排列   从小到大
+		int temp=0;//空杯
+		for(int i=0;i<arr.length;i++){
+			for(int j=0;j<arr.length-1-i;j++){
+				if(arr[j]>arr[j+1]){
+					//若前一个元素比后面的大，将两个元素的值互换
+			        temp=arr[j+1];
+			        arr[j+1]=arr[j];
+			        arr[j]=temp;
+				}
+			}
+		}
+		for(int i=0;i<arr.length;i++){
+			System.out.println(arr[i]);
+		}
+    
+    
+    public class Demo4xzpx
+{
+    //需求：选择排序
+    //分析：找到数组中最大值，将最大值放到最后一位，
+    //      下一轮找到第二大的数，放到倒数第二位。
+    //程序从里面的for循环开始看
+
+    public static void main(String[] args)
+    {
+        int [] arr = {1,22,13,4,65,5,87,9,0};
+
+        //空杯
+        int temp;
+        //下标
+        int index = 0;
+        //int  max = arr[0];
+
+        for (int j=0;j<arr.length-1;j++){ // 此轮控制要比多少次
+            for (int i=1;i<arr.length-j;i++){ // 此轮求出最大
+                // 假设index=0为最大，让每个数和他比，一旦比他大就重新把i赋给index再给arr[]
+                // 再让每个数和新的arr[index]比，直到找出最大，即为arr[index]
+                if (arr[i]>arr[index]){
+                    //max = arr[i];
+                    index = i;
+                }
+            }
+
+            //将最大的给空
+            temp = arr[index];
+            //将最后一位给最大的位置（将第二大给倒数第二位置）
+            arr[index] = arr[arr.length-j-1];
+            //将最大值给最后一个位置
+            arr[arr.length-j-1] = temp;
+            //将下标初始化
+            index = 0;
+        }
+
+        //遍历数组
+        System.out.println();
+        System.out.print("[");
+        for (int i=0;i<arr.length;i++){
+            if (i == arr.length-1){
+                System.out.print(arr[i]+"]");
+            }else {
+                System.out.print(arr[i]+",");
+            }
+        }
+    }
+}
+
+
+
+public class Demo5Tong
+{
+    //采用标尺，划分标尺刻度，从0开始，将每个数遍历，
+    //数组中有1，则在标尺1上做一个标记，有多少个1做多少个标记
+    //最终将标尺上有标记的数值输出，同一个数出现多次则输出多个
+    public static void main(String[] args)
+    {
+        int [] arr = {12,34,14,165,15};//待排序数组
+        int [] arr1 = new int[4];//标尺
+
+        for (int i = 0; i<arr.length; i++){
+            arr1[arr[i]]++;
+        }
+
+        for (int i = 0;i<arr1.length;i++){
+            while (arr1[i] != 0){
+                System.out.println(i);
+                arr1[i]--;
+            }
+        }
+    }
+}
